@@ -10,13 +10,18 @@ const initialState: HeaderState = {
     searchText: '',
     isLoading: false,
 };
-export const HeaderReducer = (state: HeaderState = initialState, action: IAction<HeaderActions, any>) => {
+export const HeaderReducer = (state: HeaderState = initialState, action: IAction<HeaderActions, any>): HeaderState => {
     switch (action.type) {
         case HeaderActions.HEADER_SUBMIT_SEARCH:
             return {
                 ...state,
-                formData: action.payload,
+                searchText: action.payload,
                 isLoading: true,
+            };
+        case HeaderActions.HEADER_LOADED:
+            return {
+                ...state,
+                isLoading: false,
             };
         default:
             return state;
