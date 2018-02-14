@@ -1,7 +1,8 @@
-import { google } from 'googleapis';
-import { takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
+import * as youtube from 'youtube-finder';
 
 import { IAnyAction } from '../../types/ActionInterface';
+import { SidebarActions } from '../sidebar/SidebarActions';
 import { HeaderActions } from './AppHeaderActions';
 
 export default function* appHeaderSaga() {
@@ -10,20 +11,31 @@ export default function* appHeaderSaga() {
 
 function* searchSubmit(action: IAnyAction) {
     try {
+        const client = youtube.createClient({ key: process.env.REACT_APP_GAPI });
+
         const params = {
-            key: process.env.REACT_APP_GAPI,
             part: 'snippet',
             q: action.payload.searchInput,
             maxResults: 5,
         };
+        console.log('pred');
+        // Promisify
+        const youtubeSearch = (param): any => {
+            return new Promise((resolve, reject) => {
+                client.search(params, (err, data) => {
+                    if (err !== null) {
+                        return reject(err);
+                    }
+                    resolve(data);
+                });
+            });
+        };
 
-        const youtube = google.youtube('v3');
-        youtube.search.list(params, (a, b) => {
-            return;
-        });
-
-        // yield put({ type: SidebarActions.SIDEBAR_SEARCH_LOADED, payload: snippetData });
-        // yield put({ type: HeaderActions.HEADER_LOADED });
+        youtubeSearch(params);
+        const snippetData = yield call(youtubeSearch, params);
+        console.log('afterSAGA', snippetData);
+        yield put({ type: SidebarActions.SIDEBAR_SEARCH_LOADED, payload: snippetData });
+        yield put({ type: HeaderActions.HEADER_LOADED });
     } catch (e) {
         console.error(e);
     }
