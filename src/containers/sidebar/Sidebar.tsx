@@ -6,7 +6,8 @@ import { Alert, Col, Row } from 'reactstrap';
 
 import { getIsLoaded, getSidebarStore, getYoutubesnippets } from './SidebarReducer';
 import { YoutubeSearchList } from 'components/youtubeSearchList/youtubeSearchList';
-import { SidebarVideoClick } from './SidebarActions';
+
+import { HomepagePlayVideo } from '../homepage/HomepageActions';
 
 // tslint:disable-next-line:no-empty-interface
 interface SidebarProps extends MapStateToProps, IDispatchToProps {}
@@ -18,7 +19,7 @@ class SidebarRaw extends React.PureComponent<SidebarProps> {
         return (
             <>
                 <Row>
-                    <Col>
+                    <Col className="border-bottom mb-3">
                         <h3 className="text-uppercase"> Search results</h3>
                     </Col>
                 </Row>
@@ -64,7 +65,7 @@ interface IDispatchToProps {
 
 const mapDispatchToProps = (dispatch): IDispatchToProps => {
     return {
-        loadYoutubeVideo: videoId => dispatch(SidebarVideoClick(videoId)),
+        loadYoutubeVideo: videoId => dispatch(HomepagePlayVideo({ videoId: videoId })),
     };
 };
 

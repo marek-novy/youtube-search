@@ -16,9 +16,9 @@ export const HeaderSubmitSearch = (payload): IAction<SidebarActions, any> => {
     };
 };
 
-export const SidebarVideoClick = (payload: string): IAction<SidebarActions, string> => {
-    return {
-        type: SidebarActions.SIDEBAR_VIDEO_CLICK,
-        payload,
-    };
-};
+// export const SidebarVideoClick = (payload: string): IAction<SidebarActions, string> => {
+//     return {
+//         type: SidebarActions.SIDEBAR_VIDEO_CLICK,
+//         payload,
+//     };
+// };
