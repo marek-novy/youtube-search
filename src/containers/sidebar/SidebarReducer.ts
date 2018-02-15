@@ -17,7 +17,7 @@ export const SidebarReducer = (
 ): SidebarState => {
     switch (action.type) {
         case SidebarActions.SIDEBAR_SEARCH_LOADED:
-            return { 
+            return {
                 ...state,
                 youtubeSnippets: action.payload,
                 isLoaded: true,
@@ -29,7 +29,7 @@ export const SidebarReducer = (
 
 // Selectors
 export const getSidebarStore = (storeState): SidebarState => {
-    return storeState.headerState;
+    return storeState.sidebarState;
 };
 
 export const getIsLoaded = (state: SidebarState): boolean => {

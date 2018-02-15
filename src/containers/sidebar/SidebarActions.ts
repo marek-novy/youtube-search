@@ -7,10 +7,10 @@ export enum SidebarActions {
 // export interface SidebarLoadedPayload {
 
 // }
-  
+
 export const HeaderSubmitSearch = (payload): IAction<SidebarActions, any> => {
     return {
         type: SidebarActions.SIDEBAR_SEARCH_LOADED,
         payload,
     };
-}; 
+};

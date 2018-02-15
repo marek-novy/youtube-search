@@ -31,9 +31,8 @@ function* searchSubmit(action: IAnyAction) {
             });
         };
 
-        youtubeSearch(params);
         const snippetData = yield call(youtubeSearch, params);
-        console.log('afterSAGA', snippetData);
+
         yield put({ type: SidebarActions.SIDEBAR_SEARCH_LOADED, payload: snippetData });
         yield put({ type: HeaderActions.HEADER_LOADED });
     } catch (e) {
