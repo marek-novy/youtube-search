@@ -3,6 +3,8 @@ import 'react-block-ui/style.css';
 import * as React from 'react';
 import BlockUi from 'react-block-ui';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Col, Container, Row } from 'reactstrap';
 
 import { HeaderSubmitPayload, HeaderSubmitSearch } from './AppHeaderActions';
 import { getHeaderStore, getIsLoading, getSearchValue } from './AppHeaderReducer';
@@ -16,13 +18,27 @@ export class AppHeaderRaw extends React.PureComponent<AppHeaderProps> {
         return (
             <header className="main-header">
                 <BlockUi tag="div" blocking={isLoading} message="Searching best videos for you.">
-                    <SearchForm
-                        handleSubmit={formData => {
-                            console.log(formData);
-                            submitFormData(formData);
-                        }}
-                    />
-                </BlockUi> 
+                    <Container fluid>
+                        <Row className="align-items-center">
+                            <Col xs="3">
+                                <Link to="/">
+                                    <h1>
+                                        {' '}
+                                        <span>You</span>Tube SEARCH
+                                    </h1>
+                                </Link>
+                            </Col>
+                            <Col>
+                                <SearchForm
+                                    handleSubmit={formData => {
+                                        console.log(formData);
+                                        submitFormData(formData);
+                                    }}
+                                />
+                            </Col>
+                        </Row>
+                    </Container>
+                </BlockUi>
             </header>
         );
     }

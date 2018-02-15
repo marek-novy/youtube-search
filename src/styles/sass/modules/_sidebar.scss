@@ -1,6 +1,7 @@
 .sidebar__results {
     margin-bottom: 15px;
-
+    max-width: 340px;
+    min-width: 320px;
     cursor: pointer;
 
     .video-thumbnail {

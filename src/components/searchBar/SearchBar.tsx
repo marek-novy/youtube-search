@@ -1,4 +1,3 @@
-import { Field } from 'formik';
 import * as React from 'react';
 import { Button, Input, InputGroup, InputGroupAddon } from 'reactstrap';
 
@@ -15,9 +14,8 @@ export const SearchBar = (props: SearchBarProps) => {
     const { name, onChange, onBlur, placeholder, value, isSubmitting, ...rest } = props;
     return (
         <InputGroup>
-            <Field
+            <Input
                 type="text"
-                component={Input}
                 name={name}
                 id={name}
                 onChange={onChange}

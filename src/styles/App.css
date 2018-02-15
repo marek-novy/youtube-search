@@ -7,6 +7,9 @@ body {
 .btn-success {
   background: #007714; }
 
+.container-fluid {
+  padding: 0 30px; }
+
 body {
   font-family: 'Roboto Condensed', sans-serif; }
 
@@ -14,12 +17,20 @@ button, input {
   font-family: 'Roboto Condensed', sans-serif; }
 
 .main-header {
-  border-bottom: 3px solid #f3f3f3; }
-  .main-header .top-logo {
-    height: 75px; }
+  border-bottom: 3px solid #f3f3f3;
+  padding: 20px 0;
+  margin-bottom: 30px; }
+  .main-header a {
+    color: black; }
+    .main-header a:hover {
+      text-decoration: none; }
+  .main-header h1 span {
+    color: red; }
 
 .sidebar__results {
   margin-bottom: 15px;
+  max-width: 340px;
+  min-width: 320px;
   cursor: pointer; }
   .sidebar__results .video-thumbnail {
     max-width: 160px; }

@@ -11,10 +11,10 @@ export const YoutubeSearchList = (props: YoutubeSearchListProps): JSX.Element =>
 
     return (
         <>
-            {items.map((item, index) => {
-                return (
-                    <Row key={index} className="sidebar__results">
-                        <Col>
+            <Row >
+                {items.map((item, index) => {
+                    return (
+                        <Col key={index} className="sidebar__results">
                             <Media
                                 onClick={e => {
                                     handleClick(item.id.videoId);
@@ -38,9 +38,9 @@ export const YoutubeSearchList = (props: YoutubeSearchListProps): JSX.Element =>
                                 </Media>
                             </Media>
                         </Col>
-                    </Row>
-                );
-            })}
+                    );
+                })}
+            </Row>
         </>
     );
 };

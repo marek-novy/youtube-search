@@ -1,7 +1,8 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
 import * as youtube from 'youtube-finder';
 
 import { IAnyAction } from '../../types/ActionInterface';
+import { HomepageActions } from '../homepage/HomepageActions';
 import { SidebarActions } from '../sidebar/SidebarActions';
 import { HeaderActions } from './AppHeaderActions';
 
@@ -16,7 +17,8 @@ function* searchSubmit(action: IAnyAction) {
         const params = {
             part: 'snippet',
             q: action.payload.searchInput,
-            maxResults: 5,
+            maxResults: 16,
+            type: 'video',
         };
         console.log('pred');
         // Promisify
@@ -33,8 +35,11 @@ function* searchSubmit(action: IAnyAction) {
 
         const snippetData = yield call(youtubeSearch, params);
 
-        yield put({ type: SidebarActions.SIDEBAR_SEARCH_LOADED, payload: snippetData });
-        yield put({ type: HeaderActions.HEADER_LOADED });
+        yield all([
+            put({ type: SidebarActions.SIDEBAR_SEARCH_LOADED, payload: snippetData }),
+            put({ type: HomepageActions.HOMEPAGE_PLAY_VIDEO, payload: { videoId: '' } }),
+            put({ type: HeaderActions.HEADER_LOADED }),
+        ]);
     } catch (e) {
         console.error(e);
     }

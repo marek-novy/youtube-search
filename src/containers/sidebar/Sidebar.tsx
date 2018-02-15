@@ -1,13 +1,12 @@
-/* tslint:disable */
-
+import { YoutubeSearchList } from 'components/youtubeSearchList/youtubeSearchList';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { Alert, Col, Row } from 'reactstrap';
 
-import { getIsLoaded, getSidebarStore, getYoutubesnippets } from './SidebarReducer';
-import { YoutubeSearchList } from 'components/youtubeSearchList/youtubeSearchList';
-
 import { HomepagePlayVideo } from '../homepage/HomepageActions';
+import { getIsLoaded, getSidebarStore, getYoutubesnippets } from './SidebarReducer';
+
+/* tslint:disable */
 
 // tslint:disable-next-line:no-empty-interface
 interface SidebarProps extends MapStateToProps, IDispatchToProps {}
@@ -30,7 +29,8 @@ class SidebarRaw extends React.PureComponent<SidebarProps> {
                         </Col>
                     </Row>
                 ) : (
-                    /*Show search Results*/ <Row>
+                    /*Show search Results*/
+                     <Row>
                         <Col>
                             <YoutubeSearchList items={youtubeSnippets.items} handleClick={this.handleClick} />
                         </Col>

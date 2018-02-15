@@ -1,8 +1,17 @@
 .main-header{
     border-bottom:3px solid #f3f3f3;
-
-    .top-logo{
-        height:75px;
-
+    padding: 20px 0;
+    margin-bottom:30px;
+    a{
+        color:black;
+        &:hover{
+            text-decoration:  none;
+        }
     }
+   h1{
+       
+       span{
+           color:red; 
+       }
+   }
 }

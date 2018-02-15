@@ -9,18 +9,16 @@ import { getHomepageStore, getVideoId } from './HomepageReducer';
 
 class HomepageRaw extends React.PureComponent<any, any> {
     render(): React.ReactNode {
-        const {videoId} = this.props;
+        const { videoId } = this.props;
         return (
             <>
                 <AppHeader />
                 <Container fluid>
                     <Row>
-                        <Col xs="12" md="4" xl="3">
+                        <Col xs="12"  md={videoId ? 3 : 12}>
                             <Sidebar />
                         </Col>
-                        <Col>
-                            <YoutubeVideo videoId={videoId} />
-                        </Col>
+                        <Col>{videoId && <YoutubeVideo videoId={videoId} />}</Col>
                     </Row>
                 </Container>
             </>
