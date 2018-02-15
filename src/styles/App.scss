@@ -1,6 +1,5 @@
 // Vendor imports
-//mediaqueries sass framework Include-media
-@import 'vendor/_include-media.scss';
+
 
 // Variables and mixins
 @import './sass/variables.scss';
@@ -14,7 +13,8 @@
 
 // Modules
 @import './sass/modules/_header.scss';
-@import './sass/modules/questionnaireForm';
+@import './sass/modules/_sidebar.scss';
+
 
 
 // MISC
