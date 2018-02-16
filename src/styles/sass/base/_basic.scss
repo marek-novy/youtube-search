@@ -1,11 +1,22 @@
-body{
+body {
     background: $body-background;
 }
 
-
 .btn-success {
-    background:$green;
+    background: $green;
 }
-.container-fluid{
+.container-fluid {
     padding: 0 30px;
+}
+.hidden {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+    overflow:hidden;
+
+}
+
+.col {
+    transition: all 1000ms ease;
 }

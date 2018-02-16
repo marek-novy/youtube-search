@@ -4,6 +4,7 @@ import { Col, Row } from 'reactstrap';
 
 interface YoutubeVideoProps {
     videoId: string;
+    [key: string]: any;
 }
 
 export class YoutubeVideo extends React.PureComponent<YoutubeVideoProps> {
@@ -16,11 +17,11 @@ export class YoutubeVideo extends React.PureComponent<YoutubeVideoProps> {
                 autoplay: 1,
             },
         };
-        const {videoId} = this.props;
+        const { videoId } = this.props;
         return (
             <Row>
                 <Col>
-                    <YouTube videoId={videoId} opts={opts}  />
+                    <YouTube videoId={videoId} opts={opts} />
                 </Col>
             </Row>
         );

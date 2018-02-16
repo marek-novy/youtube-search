@@ -15,10 +15,12 @@ class HomepageRaw extends React.PureComponent<any, any> {
                 <AppHeader />
                 <Container fluid>
                     <Row>
-                        <Col xs="12"  md={videoId ? 3 : 12}>
+                        <Col xs="12" md={videoId ? 3 : 12}>
                             <Sidebar />
                         </Col>
-                        <Col>{videoId && <YoutubeVideo videoId={videoId} />}</Col>
+                        <Col className={videoId ? '' : 'hidden'}>
+                            <YoutubeVideo videoId={videoId}  />
+                        </Col>
                     </Row>
                 </Container>
             </>
