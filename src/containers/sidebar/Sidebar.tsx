@@ -3,7 +3,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { Alert, Col, Row } from 'reactstrap';
 
-import { HomepagePlayVideo } from '../homepage/HomepageActions';
+import { HomepagePlayVideo, HomepagePlayVideoPayload } from '../homepage/HomepageActions';
 import { getIsLoaded, getSidebarStore, getYoutubesnippets } from './SidebarReducer';
 
 /* tslint:disable */
@@ -30,7 +30,7 @@ class SidebarRaw extends React.PureComponent<SidebarProps> {
                     </Row>
                 ) : (
                     /*Show search Results*/
-                     <Row>
+                    <Row>
                         <Col>
                             <YoutubeSearchList items={youtubeSnippets.items} handleClick={this.handleClick} />
                         </Col>
@@ -40,9 +40,9 @@ class SidebarRaw extends React.PureComponent<SidebarProps> {
         );
     }
 
-    private handleClick = (videoId: string): void => {
+    private handleClick = (snippetData: HomepagePlayVideoPayload): void => {
         const { loadYoutubeVideo } = this.props;
-        loadYoutubeVideo(videoId);
+        loadYoutubeVideo(snippetData);
     };
 }
 
@@ -60,12 +60,12 @@ const mapStateToProps = (state): MapStateToProps => {
 };
 
 interface IDispatchToProps {
-    loadYoutubeVideo: (payload: string) => void;
+    loadYoutubeVideo: (payload: HomepagePlayVideoPayload) => void;
 }
 
 const mapDispatchToProps = (dispatch): IDispatchToProps => {
     return {
-        loadYoutubeVideo: videoId => dispatch(HomepagePlayVideo({ videoId: videoId })),
+        loadYoutubeVideo: snippetData => dispatch(HomepagePlayVideo(snippetData)),
     };
 };
 

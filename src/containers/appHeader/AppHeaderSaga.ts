@@ -34,7 +34,7 @@ function* searchSubmit(action: IAnyAction) {
         };
 
         const snippetData = yield call(youtubeSearch, params);
-
+        console.log(snippetData);
         yield all([
             put({ type: SidebarActions.SIDEBAR_SEARCH_LOADED, payload: snippetData }),
             put({ type: HomepageActions.HOMEPAGE_PLAY_VIDEO, payload: { videoId: '' } }),

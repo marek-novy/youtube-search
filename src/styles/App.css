@@ -50,6 +50,14 @@ button, input {
       font-size: 16px;
       font-weight: bold; }
 
+.video__details {
+  max-width: 600px; }
+
+.statistics {
+  font-size: 1.1rem; }
+  .statistics em {
+    padding-left: 10px; }
+
 .tooltip .tooltip-inner {
   padding: 20px;
   background: #fff;

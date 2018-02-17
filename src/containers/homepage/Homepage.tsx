@@ -5,11 +5,11 @@ import { Col, Container, Row } from 'reactstrap';
 
 import AppHeader from '../../containers/appHeader/AppHeader';
 import Sidebar from '../sidebar/Sidebar';
-import { getHomepageStore, getVideoId } from './HomepageReducer';
+import { getHomepageStore, getSnippet, getVideoDetail, getVideoId } from './HomepageReducer';
 
 class HomepageRaw extends React.PureComponent<any, any> {
     render(): React.ReactNode {
-        const { videoId } = this.props;
+        const { videoId, snippet, videoDetail } = this.props;
         return (
             <>
                 <AppHeader />
@@ -19,7 +19,11 @@ class HomepageRaw extends React.PureComponent<any, any> {
                             <Sidebar />
                         </Col>
                         <Col className={videoId ? '' : 'hidden'}>
-                            <YoutubeVideo videoId={videoId}  />
+                            <YoutubeVideo
+                                videoId={videoId}
+                                snippet={snippet}
+                                videoDetail={videoDetail}
+                            />
                         </Col>
                     </Row>
                 </Container>
@@ -30,6 +34,8 @@ class HomepageRaw extends React.PureComponent<any, any> {
 
 interface MapStateToProps {
     videoId: string;
+    snippet: any;
+    videoDetail: any;
 }
 
 const mapStateToProps = (state): MapStateToProps => {
@@ -37,6 +43,8 @@ const mapStateToProps = (state): MapStateToProps => {
     console.log(state);
     return {
         videoId: getVideoId(homepageState),
+        snippet: getSnippet(homepageState),
+        videoDetail: getVideoDetail(homepageState),
     };
 };
 
