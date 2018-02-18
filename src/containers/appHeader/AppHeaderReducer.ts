@@ -1,16 +1,19 @@
 import { IAction } from 'types/ActionInterface';
 import { HeaderActions } from './AppHeaderActions';
 
-interface HeaderState {
+export interface HeaderState {
     searchText: string;
     isLoading: boolean;
 }
 
-const initialState: HeaderState = {
+export const HeaderInitialState: HeaderState = {
     searchText: '',
     isLoading: false,
 };
-export const HeaderReducer = (state: HeaderState = initialState, action: IAction<HeaderActions, any>): HeaderState => {
+export const HeaderReducer = (
+    state: HeaderState = HeaderInitialState,
+    action: IAction<HeaderActions, any>,
+): HeaderState => {
     switch (action.type) {
         case HeaderActions.HEADER_SUBMIT_SEARCH:
             return {

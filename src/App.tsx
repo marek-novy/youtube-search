@@ -9,25 +9,32 @@ import { PersistGate } from 'redux-persist/es/integration/react';
 import Homepage from './containers/homepage/Homepage';
 import configureStore from './store/configureStore';
 
+// extend window namespace to use gapi client JS
+declare global {
+    interface Window {
+        gapi: any;
+    }
+}
+window.gapi = window.gapi || {};
 // tslint:disable-next-line:no-submodule-imports
 const { store, persistor } = configureStore();
 
 class App extends React.Component {
-  render() {
-    return (
-      <div className="App">
-        <Provider store={store}>
-          <PersistGate persistor={persistor}>
-              <BrowserRouter>
-                <Switch>
-                  <Route exact path="/" component={Homepage} />
-                </Switch>
-              </BrowserRouter>
-          </PersistGate>
-        </Provider>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <div className="App">
+                <Provider store={store}>
+                    <PersistGate persistor={persistor}>
+                        <BrowserRouter>
+                            <Switch>
+                                <Route exact path="/" component={Homepage} />
+                            </Switch>
+                        </BrowserRouter>
+                    </PersistGate>
+                </Provider>
+            </div>
+        );
+    }
 }
 
 export default App;

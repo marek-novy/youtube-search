@@ -2,17 +2,17 @@ import { IAction } from 'types/ActionInterface';
 
 import { SidebarActions } from './SidebarActions';
 
-interface SidebarState {
+export interface SidebarState {
     youtubeSnippets: any;
     isLoaded: boolean;
 }
 
-const initialState: SidebarState = {
+export const SidebarInitialState: SidebarState = {
     youtubeSnippets: {},
     isLoaded: false,
 };
 export const SidebarReducer = (
-    state: SidebarState = initialState,
+    state: SidebarState = SidebarInitialState,
     action: IAction<SidebarActions, any>,
 ): SidebarState => {
     switch (action.type) {

@@ -20,6 +20,9 @@ body {
 .col {
   transition: all 1000ms ease; }
 
+.transitions {
+  transition: 1000ms all ease; }
+
 body {
   font-family: 'Roboto Condensed', sans-serif; }
 

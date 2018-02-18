@@ -20,7 +20,6 @@ function* searchSubmit(action: IAnyAction) {
             maxResults: 16,
             type: 'video',
         };
-        console.log('pred');
         // Promisify
         const youtubeSearch = (param): any => {
             return new Promise((resolve, reject) => {
@@ -34,7 +33,6 @@ function* searchSubmit(action: IAnyAction) {
         };
 
         const snippetData = yield call(youtubeSearch, params);
-        console.log(snippetData);
         yield all([
             put({ type: SidebarActions.SIDEBAR_SEARCH_LOADED, payload: snippetData }),
             put({ type: HomepageActions.HOMEPAGE_PLAY_VIDEO, payload: { videoId: '' } }),

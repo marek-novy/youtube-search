@@ -13,7 +13,6 @@ interface SidebarProps extends MapStateToProps, IDispatchToProps {}
 class SidebarRaw extends React.PureComponent<SidebarProps> {
     render() {
         const { isLoaded, youtubeSnippets } = this.props;
-        console.log('snippets?', youtubeSnippets);
 
         return (
             <>

@@ -2,7 +2,7 @@ import { AnyAction } from 'redux';
 
 import { HomepageActions } from './HomepageActions';
 
-interface HomepageState {
+export interface HomepageState {
     playingVideo: {
         videoId: string;
         snippet: {
@@ -18,7 +18,7 @@ interface HomepageState {
     googleData: any;
 }
 
-const initialState: HomepageState = {
+export const HomepageInitialState: HomepageState = {
     playingVideo: {
         videoId: '',
         snippet: {
@@ -34,10 +34,7 @@ const initialState: HomepageState = {
     googleData: null,
 };
 
-export const HomepageReducer: (state: HomepageState, action: AnyAction) => HomepageState = (
-    state = initialState,
-    action,
-) => {
+export const HomepageReducer = (state: HomepageState = HomepageInitialState , action: AnyAction) => {
     switch (action.type) {
         case HomepageActions.HOMEPAGE_PLAY_VIDEO:
             return {
@@ -56,6 +53,11 @@ export const HomepageReducer: (state: HomepageState, action: AnyAction) => Homep
                 ...state,
                 loggedIn: true,
                 googleData: action.payload,
+            };
+            case HomepageActions.HOMEPAGE_GOOGLE_LOGOUT:
+            return {
+                ...state,
+                loggedIn: false,
             };
 
         default:
@@ -76,6 +78,13 @@ export const getSnippet = (state: HomepageState): any => {
 };
 export const getVideoDetail = (state: HomepageState): any => {
     return state.videoDetail;
+};
+
+export const getIsLogged = (state: HomepageState): any => {
+    return state.loggedIn;
+};
+export const getGoogleData = (state: HomepageState): any => {
+    return state.googleData;
 };
 
 export default HomepageReducer;
