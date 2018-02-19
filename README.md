@@ -25,11 +25,11 @@ TODO:
 - Responsive design 
 - Not using react-google-login and implement gapi client oauth because then the gapi library could be used for api calls.
 - use gapi client or fetch call to api insted of youtube-finder package
-- Make sidebar stateless component, it is not necessary for it to be connected to redux store
+- Refactor the sidebar to stateless component, it is not necessary for it to be connected to redux store
 - refreshing like counts after like button is clicked.
 - better typing for api objects in state
 
-### Oher
+### Other
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
